@@ -40,23 +40,6 @@ var trialcheck1 = {
 };
 
 
-// var trialq1 = {
-//     type: jsPsychSurveyLikert,
-//     questions: [
-//         {
-//             prompt: "How important is it for Yoonji to know whether her physiotherapist is competent?",
-//             labels: [
-//                 "Very important",
-//                 "Important",
-//                 "Slightly important",
-//                 "Neutral",
-//                 "Slightly unimportant",
-//                 "Not important",
-//                 "Not important at all"
-//             ]
-//         }
-//     ]
-// };
 
 var trialq1 = {
     type: jsPsychSurveyLikert,
@@ -78,7 +61,7 @@ var trialq1 = {
 
 
 
-timeline.push(trial1, trialcheck1, trialq1)
+// timeline.push(trial1, trialcheck1, trialq1)
 
 
 var trial2 = {
@@ -88,7 +71,7 @@ var trial2 = {
 };
 
 
-timeline.push(trial2, trialcheck1, trialq1)
+// timeline.push(trial2, trialcheck1, trialq1)
 
 // var bigt = [trial1, trial2]
 
@@ -122,7 +105,7 @@ var trialq2 = {
 
 
 
-timeline.push(trial3, trialcheck1, trialq2)
+// timeline.push(trial3, trialcheck1, trialq2)
 
 
 var trial4 = {
@@ -131,7 +114,7 @@ var trial4 = {
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
-timeline.push(trial4, trialcheck1, trialq2)
+// timeline.push(trial4, trialcheck1, trialq2)
 
 
 
@@ -168,7 +151,7 @@ var trialq3 = {
   };
 
 
-timeline.push(trial5, trialcheck2, trialq3)
+// timeline.push(trial5, trialcheck2, trialq3)
 
 
 
@@ -178,7 +161,7 @@ var trial6 = {
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
-timeline.push(trial6, trialcheck2, trialq3)
+// timeline.push(trial6, trialcheck2, trialq3)
 
 
 var trialq4 = {
@@ -207,7 +190,7 @@ var trial7 = {
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
-timeline.push(trial7, trialcheck2, trialq4)
+// timeline.push(trial7, trialcheck2, trialq4)
 
 var trial8 = {
     type: jsPsychHtmlButtonResponse,
@@ -215,7 +198,7 @@ var trial8 = {
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
-timeline.push(trial8, trialcheck2, trialq4)
+// timeline.push(trial8, trialcheck2, trialq4)
 
 
 var trial9 = {
@@ -251,7 +234,7 @@ var trialq5 = {
 
 
 
-timeline.push(trial9, trialcheck3, trialq5)
+// timeline.push(trial9, trialcheck3, trialq5)
 
 
 
@@ -261,7 +244,7 @@ var trial10 = {
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
-timeline.push(trial10, trialcheck3, trialq5)
+// timeline.push(trial10, trialcheck3, trialq5)
 
 
 
@@ -292,7 +275,7 @@ var trial11 = {
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
-timeline.push(trial11, trialcheck3, trialq6)
+// timeline.push(trial11, trialcheck3, trialq6)
 
 
 
@@ -302,15 +285,41 @@ var trial12 = {
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
-timeline.push(trial12, trialcheck3, trialq6)
+// timeline.push(trial12, trialcheck3, trialq6)
 
 
+var big1 = [trial1, trialcheck1, trialq1]
 
-var myarray = [trial1, trial2, trial3, trial4, trial5, trial6, trial7, trial8, trial9, trial10, trial11, trial12];
+// timeline.push(big1[0])
+
+var big2 = [trial2, trialcheck1, trialq1]
+
+var big3 = [trial3, trialcheck1, trialq2]
+
+var big4 = [trial4, trialcheck1, trialq2]
+
+var big5 = [trial5, trialcheck2, trialq3]
+
+var big6 = [trial6, trialcheck2, trialq3]
+
+var big7 = [trial7, trialcheck2, trialq4]
+
+var big8 = [trial8, trialcheck2, trialq4]
+
+var big9 = [trial9, trialcheck3, trialq5]
+
+var big10 = [trial10, trialcheck3, trialq5]
+
+var big11 = [trial11, trialcheck3, trialq6]
+
+var big12 = [trial12, trialcheck3, trialq6]
+
+
+var myarray = [big1, big2, big3, big4, big5, big6, big7, big8, big9, big10, big11, big12];
 
 var array1 = jsPsych.randomization.repeat(myarray, 1, false);
 
-timeline.push(array1[1])
+timeline.push(array1[0][0], array1[0][1], array1[0][2])
 
 
 
