@@ -1,4 +1,4 @@
-const jsPsych = jsPsych.init({
+const jsPsych = initJsPsych({
   on_finish: function(data){
     proliferate.submit({"trials": data.values()});
     window.location = "https://app.prolific.co/submissions/complete?cc=COH7SM62";
