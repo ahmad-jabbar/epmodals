@@ -1,5 +1,4 @@
 const jsPsych = initJsPsych({
-  jsPsych.init({
   timeline: exp,
   on_finish: function(data) {
     proliferate.submit({"trials": data.values()});
