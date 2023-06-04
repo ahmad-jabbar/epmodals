@@ -1,9 +1,8 @@
 const jsPsych = initJsPsych({
   on_finish: function(data){
     // jsPsych.data.displayData('csv');
-//     proliferate.submit({"trials": data.values()});
+    proliferate.submit({"trials": data.values()});
     window.location = "https://app.prolific.co/submissions/complete?cc=COH7SM62";
-    proliferate.submit({"trials": data.values()})
   }
 });
 
