@@ -361,8 +361,3 @@ timeline.push(conclusion);
 
 
 jsPsych.run(timeline)
-
-
-
-
-
