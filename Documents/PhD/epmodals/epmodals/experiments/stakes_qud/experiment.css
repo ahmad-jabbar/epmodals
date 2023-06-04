@@ -1,0 +1,10 @@
+body {
+    background-color: rgb(237, 237, 237);
+  }
+  .jspsych-display-element {
+    font-size: 18px;
+    color: black;
+  }
+  .jspsych-content {
+    max-width: 80%; 
+  }
