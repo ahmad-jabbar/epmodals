@@ -1,10 +1,15 @@
 const jsPsych = initJsPsych({
-    on_finish: function () {
-        //jsPsych.data.displayData('csv');
-        window.location = "https://app.prolific.co/submissions/complete?cc=COH7SM62";
-        proliferate.submit({ "trials": jsPsych.data.get().values() })
+    on_finish: function (data) {
+        jsPsych.data.displayData('csv');
+        proliferate.submit({"trials": data.values()});
       }
   });
+        
+        //jsPsych.data.displayData('csv');
+//         window.location = "https://app.prolific.co/submissions/complete?cc=COH7SM62";
+//         proliferate.submit({ "trials": jsPsych.data.get().values() })
+//       }
+//   });
 
 var subject_id = jsPsych.data.getURLVariable('PROLIFIC_PID');
 var study_id = jsPsych.data.getURLVariable('STUDY_ID');
