@@ -360,4 +360,4 @@ const conclusion = {
 timeline.push(conclusion);
 
 
-jsPsych.run(timeline)
+jsPsych.run(timeline);
