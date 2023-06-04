@@ -1,11 +1,11 @@
 const jsPsych = initJsPsych({
-    on_finish: function (data) {
+  on_finish: function (data) {
 //         jsPsych.data.displayData('csv');
-        proliferate.submit({"trials": data.values()});
-      }
-  });
-        
-        //jsPsych.data.displayData('csv');
+      proliferate.submit({"trials": data.values()});
+    }
+});
+      
+      //jsPsych.data.displayData('csv');
 //         window.location = "https://app.prolific.co/submissions/complete?cc=COH7SM62";
 //         proliferate.submit({ "trials": jsPsych.data.get().values() })
 //       }
@@ -16,12 +16,10 @@ var study_id = jsPsych.data.getURLVariable('STUDY_ID');
 var session_id = jsPsych.data.getURLVariable('SESSION_ID');
 
 jsPsych.data.addProperties({
-  subject_id: subject_id,
-  study_id: study_id,
-  session_id: session_id
+subject_id: subject_id,
+study_id: study_id,
+session_id: session_id
 });
-
-
 
 let timeline = [];
 const irb = {
@@ -45,15 +43,20 @@ timeline.push(instructions);
 
 var yoonji1 = "Yoonji is a prolific baseball player. She wants to try out for America\'s national team. The trials are a month away. Yoonji goes to her physiotherapist. The physiotherapist performs a careful and thorough physical examination, which suggests that she has a slight meniscus tear. The physiotherapist says to Yoonji:<br><br><b>\"You might have a slight meniscus tear.\"</b><br><br>Yoonji wonders if she should stop practicing and rest until the trials, but she also worries that rest may make her rusty. For more certainty, she gets an MRI done. Regardless of the MRI results, she decides that she will rest due to mental health reasons.<br><br>Still, she is interested in finding out <b>whether her physiotherapist is competent</b> and if she should stay with him. Yoonji goes to the radiologist who has the MRI results, <b>which show no tear at all</b>. Yoonji asks the radiologist:<br><br> \"My physiotherapist said that I might have a slight meniscus tear. Is what he said true?\"<br><br><b>What\'s the most appropriate response to Yoonji\'s question \"Is what he said true?\"?</b><br><br>"
 
+var yoonjicomph = "Yoonji is a prolific baseball player. She wants to try out for America\'s national team. The trials are a month away. Yoonji goes to her physiotherapist. The physiotherapist performs a careful and thorough physical examination, which suggests that she has a slight meniscus tear. The physiotherapist says to Yoonji:<br><br><b>\"You might have a slight meniscus tear.\"</b><br><br>Yoonji wonders if she should stop practicing and rest until the trials, but she also worries that rest may make her rusty. For more certainty, she gets an MRI done. Regardless of the MRI results, she decides that she will rest until the end of the sports season.<br><br>Still, she is interested in finding out <b>whether her physiotherapist is competent</b> and if she should stay with him for the next sports season too. Yoonji goes to the radiologist who has the MRI results, which show <b>no tear at all</b>. The radiologist also interprets the physiotherapist's report, which doesn't show any errors. Yoonji asks the radiologist:<br><br> \"I play baseball professionally. I am wondering if I should stay with my phsyiotherapist for another year. He said, \'You might have a slight meniscus tear\'. Is what he said true?\"<br><br><b>What\'s the most appropriate response to Yoonji\'s question \"Is what he said true?\"?</b><br><br>"
+
 var trial1 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "Yoonji is a prolific baseball player. She wants to try out for America\'s national team. The trials are a month away. Yoonji goes to her physiotherapist. The physiotherapist performs a careful and thorough physical examination, which suggests that she has a slight meniscus tear. The physiotherapist says to Yoonji:<br><br><b>\"You might have a slight meniscus tear.\"</b><br><br>Yoonji wonders if she should stop practicing and rest until the trials, but she also worries that rest may make her rusty. For more certainty, she gets an MRI done. Regardless of the MRI results, she decides that she will rest until the end of the sports season.<br><br>Still, she is interested in finding out <b>whether her physiotherapist is competent</b> and if she should stay with him for the next sports season too. Yoonji goes to the radiologist who has the MRI results, which show <b>no tear at all</b>. The radiologist also interprets the physiotherapist's report, which doesn't show any errors. Yoonji asks the radiologist:<br><br> \"I play baseball professionally. I am wondering if I should stay with my phsyiotherapist for another year. He said, \'You might have a slight meniscus tear\'. Is what he said true?\"<br><br><b>What\'s the most appropriate response to Yoonji\'s question \"Is what he said true?\"?</b><br><br>",
+    stimulus: yoonjicomph,
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
+
+var yoonjicheck = "Instructions: Given the statement below, choose whether what is said is TRUE or FALSE.<br><br><br>The MRI result suggested that Yoonji had a meniscus tear.<br><br>"
+
 var trialcheck1 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "Instructions: Given the statement below, choose whether what is said is TRUE or FALSE.<br><br><br>The MRI result suggested that Yoonji had a meniscus tear.<br><br>",
+    stimulus: yoonjicheck,
     choices: ['True', 'False'],
 };
 
@@ -76,9 +79,13 @@ var trialq1 = {
   };
 
 
-var trial2 = {
+
+
+var yoonjicompl = "Yoonji liked to play baseball when she was a kid. Now, she\'s busy most of the day due to work, but she wants to try playing baseball with her nieces. Due to rustiness over time, she\'s not sure if she should do that though. Yoonji goes to her physiotherapist. The physiotherapist performs a careful and thorough physical examination, which suggests that she has a slight meniscus tear. The physiotherapist says to Yoonji:<br><br><b>\"You might have a slight meniscus tear.\"</b><br><br> Yoonji wonders if she should ditch plans of playing baseball with her nieces. For more certainty, she gets an MRI done. Regardless of the MRI results, she decides that she\'ll delay her plans to play with her nieces for some other weekend. Still, she is interested in finding out <b>whether her physiotherapist is competent</b> and if she should stay with him for another year. Yoonji goes to the radiologist who has the MRI results, which show <b>no tear at all</b>. The radiologist also interprets the physiotherapist's report, which doesn't show any errors. Yoonji asks the radiologist:<br><br> \"I play baseball with my nieces at times. I am wondering if I should stay with my physiotherapist for another year. He said, \'You might have a slight meniscus tear\'. Is what he said true?\"<br><br> <b>What\'s the most appropriate response to Yoonji\'s question \"Is what he said true?\"?</b><br><br>"
+
+  var trial2 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "Yoonji liked to play baseball when she was a kid. Now, she\'s busy most of the day due to work, but she wants to try playing baseball with her nieces. Due to rustiness over time, she\'s not sure if she should do that though. Yoonji goes to her physiotherapist. The physiotherapist performs a careful and thorough physical examination, which suggests that she has a slight meniscus tear. The physiotherapist says to Yoonji:<br><br><b>\"You might have a slight meniscus tear.\"</b><br><br> Yoonji wonders if she should ditch plans of playing baseball with her nieces. For more certainty, she gets an MRI done. Regardless of the MRI results, she decides that she\'ll delay her plans to play with her nieces for some other weekend. Still, she is interested in finding out <b>whether her physiotherapist is competent</b> and if she should stay with him for another year. Yoonji goes to the radiologist who has the MRI results, which show <b>no tear at all</b>. The radiologist also interprets the physiotherapist's report, which doesn't show any errors. Yoonji asks the radiologist:<br><br> \"I play baseball with my nieces at times. I am wondering if I should stay with my physiotherapist for another year. He said, \'You might have a slight meniscus tear\'. Is what he said true?\"<br><br> <b>What\'s the most appropriate response to Yoonji\'s question \"Is what he said true?\"?</b><br><br>",
+    stimulus: yoonjicompl,
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
@@ -87,9 +94,11 @@ var trial2 = {
 // timeline.push(bigt[0], bigt[1])
 
 
+var yoonjiprejh = "Yoonji is a prolific baseball player. She wants to try out for America\'s national team. The trials are a month away. Yoonji goes to her physiotherapist. The physiotherapist performs a careful and thorough physical examination, which suggests that she has a slight meniscus tear. The physiotherapist says to Yoonji:<br><br><b>\"You might have a slight meniscus tear.\"</b><br><br>Yoonji wonders if she should stop practicing and rest until the trials, but she also worries that rest may make her rusty. For more certainty, she gets an MRI done, as she is interested in finding out <b>if she has a meniscus tear</b>.<br><br> Yoonji goes to the radiologist who has the MRI results, which show <b>no tear at all</b>. The radiologist also interprets the physiotherapist's report, which doesn't show any errors. Yoonji asks the radiologist:<br><br> \"I play baseball professionally. I am wondering if I have a meniscus tear. My physiotherapist said, \'You might have a slight meniscus tear\'. Is what he said true?\"<br><br> <b>What\'s the most appropriate response to Yoonji\'s question \"Is what he said true?\"?</b><br><br>"
+
 var trial3 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "Yoonji is a prolific baseball player. She wants to try out for America\'s national team. The trials are a month away. Yoonji goes to her physiotherapist. The physiotherapist performs a careful and thorough physical examination, which suggests that she has a slight meniscus tear. The physiotherapist says to Yoonji:<br><br><b>\"You might have a slight meniscus tear.\"</b><br><br>Yoonji wonders if she should stop practicing and rest until the trials, but she also worries that rest may make her rusty. For more certainty, she gets an MRI done, as she is interested in finding out <b>if she has a meniscus tear</b>.<br><br> Yoonji goes to the radiologist who has the MRI results, which show <b>no tear at all</b>. The radiologist also interprets the physiotherapist's report, which doesn't show any errors. Yoonji asks the radiologist:<br><br> \"I play baseball professionally. I am wondering if I have a meniscus tear. My physiotherapist said, \'You might have a slight meniscus tear\'. Is what he said true?\"<br><br> <b>What\'s the most appropriate response to Yoonji\'s question \"Is what he said true?\"?</b><br><br>",
+    stimulus: yoonjiprejh,
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
@@ -117,26 +126,31 @@ var trialq2 = {
 // timeline.push(trial3, trialcheck1, trialq2)
 
 
+var yoonjiprejl = "Yoonji liked to play baseball when she was a kid. Now, she\'s busy most of the day due to work, but she wants to try playing baseball with her nieces. Due to rustiness over time, she\'s not sure if she should do that though. Yoonji goes to her physiotherapist. The physiotherapist performs a careful and thorough physical examination, which suggests that she has a slight meniscus tear. The physiotherapist says to Yoonji:<br><br><b>\"You might have a slight meniscus tear.\"</b><br><br> Yoonji wonders if she should ditch plans of playing baseball with her nieces. She gets an MRI done, as she is interested in finding out <b>if she has a meniscus tear</b>. Yoonji goes to the radiologist who has the MRI results, which show <b>no tear at all</b>. The radiologist also interprets the physiotherapist's report, which doesn't show any errors. Yoonji asks the radiologist:<br><br>\"I play baseball with my nieces at times. I am wondering if I have a meniscus tear. My physiotherapist said, \'You might have a slight meniscus tear\'. Is what he said true?\"<br><br> <b>What\'s the most appropriate response to Yoonji\'s question \"Is what he said true?\"?</b><br><br>"
+
 var trial4 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "Yoonji liked to play baseball when she was a kid. Now, she\'s busy most of the day due to work, but she wants to try playing baseball with her nieces. Due to rustiness over time, she\'s not sure if she should do that though. Yoonji goes to her physiotherapist. The physiotherapist performs a careful and thorough physical examination, which suggests that she has a slight meniscus tear. The physiotherapist says to Yoonji:<br><br><b>\"You might have a slight meniscus tear.\"</b><br><br> Yoonji wonders if she should ditch plans of playing baseball with her nieces. She gets an MRI done, as she is interested in finding out <b>if she has a meniscus tear</b>. Yoonji goes to the radiologist who has the MRI results, which show <b>no tear at all</b>. The radiologist also interprets the physiotherapist's report, which doesn't show any errors. Yoonji asks the radiologist:<br><br>\"I play baseball with my nieces at times. I am wondering if I have a meniscus tear. My physiotherapist said, \'You might have a slight meniscus tear\'. Is what he said true?\"<br><br> <b>What\'s the most appropriate response to Yoonji\'s question \"Is what he said true?\"?</b><br><br>",
+    stimulus: yoonjiprejl,
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
 // timeline.push(trial4, trialcheck1, trialq2)
 
 
+var johncomph = "John is worried he might have strep throat. He goes to his primary doctor. The doctor runs an initial test that indicates that there is a 75% chance that John does not have strep. Based on the initial test results, John\'s doctor says:<br><br><b>\"You probably don\'t have strep throat.\"</b><br><br>However, the doctor recommends doing a throat culture in order to be safe. John's symptoms go away, but John is still interested in knowing <b>whether his primary doctor is competent</b>.<br><br> John comes back two days later to find out the results of the throat culture, and sees a different doctor, who has the results and a report that suggests that John's primary doctor did not make any mistakes in running the tests or interpreting them. The throat culture comes up positive, which indicates <b>there is a 90% chance that John has strep throat</b>.<br><br>John is interested in his doctor's competence because John is on the advisory committee of Pano Albo\'s doctors unit (PADU) that specializes in diagnosing diseases. John wants to recommend his primary doctor for the position of PADU\'s chief scientist. But now John wants to know <b>whether his primary doctor is a suitable recommendation</b>.<br><br> John asks the second doctor: <br><br>\"I have a recommendation to make for PADU, and I\'m trying to figure out whether I can rely on my primary doctor. He told me, \'You probably don\'t have strep\'. <b>Is what he said true?\"</b><br><br><b>What's the most appropriate response to John\'s question \"is what he said true\"?</b><br><br>"
 
 var trial5 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "John is worried he might have strep throat. He goes to his primary doctor. The doctor runs an initial test that indicates that there is a 75% chance that John does not have strep. Based on the initial test results, John\'s doctor says:<br><br><b>\"You probably don\'t have strep throat.\"</b><br><br>However, the doctor recommends doing a throat culture in order to be safe. John's symptoms go away, but John is still interested in knowing <b>whether his primary doctor is competent</b>.<br><br> John comes back two days later to find out the results of the throat culture, and sees a different doctor, who has the results and a report that suggests that John's primary doctor did not make any mistakes in running the tests or interpreting them. The throat culture comes up positive, which indicates <b>there is a 90% chance that John has strep throat</b>.<br><br>John is interested in his doctor's competence because John is on the advisory committee of Pano Albo\'s doctors unit (PADU) that specializes in diagnosing diseases. John wants to recommend his primary doctor for the position of PADU\'s chief scientist. But now John wants to know <b>whether his primary doctor is a suitable recommendation</b>.<br><br> John asks the second doctor: <br><br>\"I have a recommendation to make for PADU, and I\'m trying to figure out whether I can rely on my primary doctor. He told me, \'You probably don\'t have strep\'. <b>Is what he said true?\"</b><br><br><b>What's the most appropriate response to John\'s question \"is what he said true\"?</b><br><br>",
+    stimulus: johncomph,
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
 
+var johncheck = "Instructions: Given the statement below, choose whether what is said is TRUE or FALSE.<br><br><br>The throat culture as done by the second doctor suggested that John did not have strep throat.<br><br>"
+
 var trialcheck2 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "Instructions: Given the statement below, choose whether what is said is TRUE or FALSE.<br><br><br>The throat culture as done by the second doctor suggested that John did not have strep throat.<br><br>",
+    stimulus: johncheck,
     choices: ['True', 'False'],
 };
 
@@ -164,9 +178,12 @@ var trialq3 = {
 
 
 
+var johncompl = "John is worried he might have strep throat. He goes to his primary doctor. The doctor runs an initial test that indicates that there is a 75% chance that John does not have strep. Based on the initial test results, John\'s doctor says:<br><br><b>\"You probably don\'t have strep throat.\"</b><br><br>However, the doctor recommends doing a throat culture in order to be safe. John's symptoms go away, but John is still interested in knowing <b>whether his primary doctor is competent</b>. <br><br> John comes back two days later to find out the results of the throat culture, and sees a different doctor, who has the results and a report that suggests that John's primary doctor did not make any mistakes in running the tests or interpreting them. The throat culture comes up positive, which indicates <b>there is a 90% chance that John has strep throat</b>.<br><br>John is instered in his doctor's competence because John wonders <b>if John should file a complaint against his doctor</b>. John asks the second doctor: <br><br>\"I\'m trying to figure out whether I can rely on my primary doctor or if I should file a complaint against him. He told me, \'You probably don\'t have strep\'. <b>Is what he said true?\"</b><br><br><b>What's the most appropriate response to John\'s question \"is what he said true\"?</b><br><br>"
+
+
 var trial6 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "John is worried he might have strep throat. He goes to his primary doctor. The doctor runs an initial test that indicates that there is a 75% chance that John does not have strep. Based on the initial test results, John\'s doctor says:<br><br><b>\"You probably don\'t have strep throat.\"</b><br><br>However, the doctor recommends doing a throat culture in order to be safe. John's symptoms go away, but John is still interested in knowing <b>whether his primary doctor is competent</b>. <br><br> John comes back two days later to find out the results of the throat culture, and sees a different doctor, who has the results and a report that suggests that John's primary doctor did not make any mistakes in running the tests or interpreting them. The throat culture comes up positive, which indicates <b>there is a 90% chance that John has strep throat</b>.<br><br>John is instered in his doctor's competence because John wonders <b>if John should file a complaint against his doctor</b>. John asks the second doctor: <br><br>\"I\'m trying to figure out whether I can rely on my primary doctor or if I should file a complaint against him. He told me, \'You probably don\'t have strep\'. <b>Is what he said true?\"</b><br><br><b>What's the most appropriate response to John\'s question \"is what he said true\"?</b><br><br>",
+    stimulus: johncompl,
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
@@ -193,32 +210,46 @@ var trialq4 = {
 
 
 
+
+var johnprejh = "John is worried he might have strep throat. He goes to his primary doctor. The doctor runs an initial test that indicates that there is a 75% chance that John does not have strep. Based on the initial test results, John\'s doctor says:<br><br><b>\"You probably don\'t have strep throat.\"</b><br><br>However, the doctor recommends doing a throat culture in order to be safe.<br><br> For John, the pain with strep throat is unbearable and it lasts a long time; so, John wonders <b>if he has strep throat or not</b>.<br><br> John comes back two days later to find out the results of the throat culture, and sees a different doctor who has the results and a report that suggests that John's primary doctor did not make any mistakes in running the tests or interpreting them. The throat culture comes up positive, which indicates <b>there is a 90% chance that John has strep throat</b>. John asks the second doctor: <br><br>\"I can't tolerate strep and I\'m trying to figure out whether I have strep or not. My primary doctor told me, \'You probably don\'t have strep\'. <b>Is what he said true?\"</b><br><br><b>What\'s the most appropriate response to John\'s question \"is what he said true\"?</b><br><br>"
+
 var trial7 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "John is worried he might have strep throat. He goes to his primary doctor. The doctor runs an initial test that indicates that there is a 75% chance that John does not have strep. Based on the initial test results, John\'s doctor says:<br><br><b>\"You probably don\'t have strep throat.\"</b><br><br>However, the doctor recommends doing a throat culture in order to be safe.<br><br> For John, the pain with strep throat is unbearable and it lasts a long time; so, John wonders <b>if he has strep throat or not</b>.<br><br> John comes back two days later to find out the results of the throat culture, and sees a different doctor who has the results and a report that suggests that John's primary doctor did not make any mistakes in running the tests or interpreting them. The throat culture comes up positive, which indicates <b>there is a 90% chance that John has strep throat</b>. John asks the second doctor: <br><br>\"I can't tolerate strep and I\'m trying to figure out whether I have strep or not. My primary doctor told me, \'You probably don\'t have strep\'. <b>Is what he said true?\"</b><br><br><b>What\'s the most appropriate response to John\'s question \"is what he said true\"?</b><br><br>",
+    stimulus: johnprejh,
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
 // timeline.push(trial7, trialcheck2, trialq4)
 
+var johnprejl = "John is worried he might have strep throat. He goes to his primary doctor. The doctor runs an initial test that indicates that there is a 75% chance that John does not have strep. Based on the initial test results, John\'s doctor says:<br><br><b>\"You probably don\'t have strep throat.\"</b><br><br>However, the doctor recommends doing a throat culture in order to be safe.<br><br> For John, strep throat really doesn't cause much of a problem, but he has a lot of free time these days; so, John wonders <b>if he has strep throat or not</b>.<br><br> John comes back two days later to find out the results of the throat culture, and sees a different doctor who has the results and a report that suggests that John's primary doctor did not make any mistakes in running the tests or interpreting them. The throat culture comes up positive, which indicates <b>there is a 90% chance that John has strep throat</b>. John asks the second doctor: <br><br>.\"Although strep doesn't bother me much, I\'m trying to figure out whther I have strep or not. My primary doctor told me, \'You probably don\'t have strep\'. <b>Is what he said true?\"</b><br><br><b>What's the most appropriate response to John\'s question \"is what he said true\"?</b><br><br>"
+
+
 var trial8 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "John is worried he might have strep throat. He goes to his primary doctor. The doctor runs an initial test that indicates that there is a 75% chance that John does not have strep. Based on the initial test results, John\'s doctor says:<br><br><b>\"You probably don\'t have strep throat.\"</b><br><br>However, the doctor recommends doing a throat culture in order to be safe.<br><br> For John, strep throat really doesn't cause much of a problem, but he has a lot of free time these days; so, John wonders <b>if he has strep throat or not</b>.<br><br> John comes back two days later to find out the results of the throat culture, and sees a different doctor who has the results and a report that suggests that John's primary doctor did not make any mistakes in running the tests or interpreting them. The throat culture comes up positive, which indicates <b>there is a 90% chance that John has strep throat</b>. John asks the second doctor: <br><br>.\"Although strep doesn't bother me much, I\'m trying to figure out whther I have strep or not. My primary doctor told me, \'You probably don\'t have strep\'. <b>Is what he said true?\"</b><br><br><b>What's the most appropriate response to John\'s question \"is what he said true\"?</b><br><br>",
+    stimulus: johnprejl,
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
 // timeline.push(trial8, trialcheck2, trialq4)
 
 
+
+var tonyprejh = "A town has an infamous murderer called \'Big Tony\'. There are reports circulating that say that near the main train station, there\'s evidence of Big Tony\'s death. Inspector Ari arrives at the crime scene. After looking at the evidence carefully and exhaustively running all the tests he could, Ari says:<br><br><b> \"Big Tony might be dead\".</b><br><br>Ari decides to ease the patrol at night in the town. <b>Soon after, two brutal murders get committed in a single night, just in the style of Big Tony</b>. Then a team of federal agents gets called by Ari\'s supervisor. The federal agents look at the evidence and after running some specialized forensic tests conclude that actually <b>Big Tony is alive and he planted the fake evidence himself</b>, but the initial investigation by Ari was carefully conducted without errors.<br><br> The supervisor wonders <b>if Big Tony is dead</b>, given that two brutal murders got committed after Ari's inspection. The supervisor asks the federal agents:<br><br>\"Two brutal murders got committed, and I am trying to figure out if Big Tony is dead. After looking at the evidence carefully, Ari said, \'Big Tony might be dead\'. <b>Is what he said true?</b>\"<br><br><b>What's the most appropriate response to the supervisor\'s question \"is what he said true\"?</b><br><br>"
+
 var trial9 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "A town has an infamous murderer called \'Big Tony\'. There are reports circulating that say that near the main train station, there\'s evidence of Big Tony\'s death. Inspector Ari arrives at the crime scene. After looking at the evidence carefully and exhaustively running all the tests he could, Ari says:<br><br><b> \"Big Tony might be dead\".</b><br><br>Ari decides to ease the patrol at night in the town. <b>Soon after, two brutal murders get committed in a single night, just in the style of Big Tony</b>. Then a team of federal agents gets called by Ari\'s supervisor. The federal agents look at the evidence and after running some specialized forensic tests conclude that actually <b>Big Tony is alive and he planted the fake evidence himself</b>, but the initial investigation by Ari was carefully conducted without errors.<br><br> The supervisor wonders <b>if Big Tony is dead</b>, given that two brutal murders got committed after Ari's inspection. The supervisor asks the federal agents:<br><br>\"Two brutal murders got committed, and I am trying to figure out if Big Tony is dead. After looking at the evidence carefully, Ari said, \'Big Tony might be dead\'. <b>Is what he said true?</b>\"<br><br><b>What's the most appropriate response to the supervisor\'s question \"is what he said true\"?</b><br><br>",
+    stimulus: tonyprejh,
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
+
+
+
+var tonycheck = "Instructions: Given the statement below, choose whether what is said is TRUE or FALSE.<br><br><br>The specialized forensic tests revealed that Big Tony was dead.<br><br>"
+
 var trialcheck3 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "Instructions: Given the statement below, choose whether what is said is TRUE or FALSE.<br><br><br>The specialized forensic tests revealed that Big Tony was dead.<br><br>",
+    stimulus: tonycheck,
     choices: ['True', 'False'],
 };
 
@@ -247,9 +278,11 @@ var trialq5 = {
 
 
 
+var tonyprejl = "A town has an infamous murderer called \'Big Tony\'. There are reports circulating that say that near the main train station, there\'s evidence of Big Tony\'s death. Inspector Ari arrives at the crime scene. After looking at the evidence carefully and exhaustively running all the tests he could, Ari says:<br><br><b> \"Big Tony might be dead\".</b><br><br>Ari decides to ease the patrol at night in town. <b>Soon after, a town local reports a sighting of someone matching Big Tony's description</b>. Then a team of federal agents gets called by Ari\'s supervisor. The federal agents look at the evidence and after running some specialized forensic tests conclude that actually <b>Big Tony is alive and he planted the fake evidence himself</b>, but the initial investigation by Ari was carefully conducted without errors.<br><br> The supervisor wonders <b>if Big Tony is dead</b>, given Big Tony's sighting by a local after Ari's inspection. The supervisor asks the federal agents:<br><br>\"A local reported sighting Big Tony, and I am trying to figure out if Big Tony is dead. After looking at the evidence carefully, Ari said, \'Big Tony might be dead\'. <b>Is what he said true?</b>\"<br><br><b>What's the most appropriate response to the investigator\'s question \"is what he said true\"?</b><br><br>"
+
 var trial10 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "A town has an infamous murderer called \'Big Tony\'. There are reports circulating that say that near the main train station, there\'s evidence of Big Tony\'s death. Inspector Ari arrives at the crime scene. After looking at the evidence carefully and exhaustively running all the tests he could, Ari says:<br><br><b> \"Big Tony might be dead\".</b><br><br>Ari decides to ease the patrol at night in town. <b>Soon after, a town local reports a sighting of someone matching Big Tony's description</b>. Then a team of federal agents gets called by Ari\'s supervisor. The federal agents look at the evidence and after running some specialized forensic tests conclude that actually <b>Big Tony is alive and he planted the fake evidence himself</b>, but the initial investigation by Ari was carefully conducted without errors.<br><br> The supervisor wonders <b>if Big Tony is dead</b>, given Big Tony's sighting by a local after Ari's inspection. The supervisor asks the federal agents:<br><br>\"A local reported sighting Big Tony, and I am trying to figure out if Big Tony is dead. After looking at the evidence carefully, Ari said, \'Big Tony might be dead\'. <b>Is what he said true?</b>\"<br><br><b>What's the most appropriate response to the investigator\'s question \"is what he said true\"?</b><br><br>",
+    stimulus: tonyprejl,
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
@@ -278,19 +311,21 @@ var trialq6 = {
 
 
 
+var tonycomph = "A town has an infamous murderer called \'Big Tony\'. There are reports circulating that say that near the main train station, there\'s evidence of Big Tony\'s death. Inspector Ari arrives at the crime scene. After looking at the evidence carefully and exhaustively running all the tests he could, Ari says:<br><br><b> \"Big Tony might be dead\".</b><br><br>Ari decides to ease the patrol at night in the town. <b>Soon after, two brutal murders get committed in a single night, just in the style of Big Tony</b>. Then a team of federal agents gets called by Ari\'s supervisor. The federal agents look at the evidence and after running some specialized forensic tests conclude that actually <b>Big Tony is alive and he planted the fake evidence himself</b>, but the initial investigation by Ari was carefully conducted without errors.<br><br> The supervisor wonders <b>if Ari is a competent inspector</b> and if he should be kept as a member of the inspection team, given that two brutal murders got committed after Ari's inspection. The supervisor asks the federal agents:<br><br>\"Two brutal murders got committed, and I am wondering if I can rely on Ari or if I should fire him. After looking at the evidence carefully, Ari said, \'Big Tony might be dead\'. <b>Is what he said true?</b>\"<br><br><b>What's the most appropriate response to the supervisor\'s question \"is what he said true\"?</b><br><br>"
+
 var trial11 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "A town has an infamous murderer called \'Big Tony\'. There are reports circulating that say that near the main train station, there\'s evidence of Big Tony\'s death. Inspector Ari arrives at the crime scene. After looking at the evidence carefully and exhaustively running all the tests he could, Ari says:<br><br><b> \"Big Tony might be dead\".</b><br><br>Ari decides to ease the patrol at night in the town. <b>Soon after, two brutal murders get committed in a single night, just in the style of Big Tony</b>. Then a team of federal agents gets called by Ari\'s supervisor. The federal agents look at the evidence and after running some specialized forensic tests conclude that actually <b>Big Tony is alive and he planted the fake evidence himself</b>, but the initial investigation by Ari was carefully conducted without errors.<br><br> The supervisor wonders <b>if Ari is a competent inspector</b> and if he should be kept as a member of the inspection team, given that two brutal murders got committed after Ari's inspection. The supervisor asks the federal agents:<br><br>\"Two brutal murders got committed, and I am wondering if I can rely on Ari or if I should fire him. After looking at the evidence carefully, Ari said, \'Big Tony might be dead\'. <b>Is what he said true?</b>\"<br><br><b>What's the most appropriate response to the supervisor\'s question \"is what he said true\"?</b><br><br>",
+    stimulus: tonycomph,
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
 // timeline.push(trial11, trialcheck3, trialq6)
 
-
+var tonycompl = "A town has an infamous murderer called \'Big Tony\'. There are reports circulating that say that near the main train station, there\'s evidence of Big Tony\'s death. Inspector Ari arrives at the crime scene. After looking at the evidence carefully and exhaustively running all the tests they could, Ari says:<br><br><b> \"Big Tony might be dead\".</b><br><br>Ari decides to ease the patrol at night in the town. <b>Soon after, a town local reports a sighting of someone matching Big Tony's description</b>. Then a team of federal agents gets called by Ari\'s supervisor. The federal agents look at the evidence more and after running some specialized forensic tests conclude that actually <b>Big Tony is alive and he planted the fake evidence himself</b>, but the initial investigation by Ari was carefully conducted without errors.<br><br>  The supervisor wonders <b>if Ari is a competent inspector</b> and if he should be kept as a member of the inspection team, given Big Tony's sighting by a local after Ari's inspection. The supervisor asks the federal agents:<br><br>\"A local reported sighting Big Tony, and I am wondering if I can rely on Ari or if I should fire him. After looking at the evidence carefully, Ari said, \'Big Tony might be dead\'. <b>Is what he said true?</b>\"<br><br><b>What's the most appropriate response to the supervisor\'s question \"is what he said true\"?</b><br><br>"
 
 var trial12 = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "A town has an infamous murderer called \'Big Tony\'. There are reports circulating that say that near the main train station, there\'s evidence of Big Tony\'s death. Inspector Ari arrives at the crime scene. After looking at the evidence carefully and exhaustively running all the tests they could, Ari says:<br><br><b> \"Big Tony might be dead\".</b><br><br>Ari decides to ease the patrol at night in the town. <b>Soon after, a town local reports a sighting of someone matching Big Tony's description</b>. Then a team of federal agents gets called by Ari\'s supervisor. The federal agents look at the evidence more and after running some specialized forensic tests conclude that actually <b>Big Tony is alive and he planted the fake evidence himself</b>, but the initial investigation by Ari was carefully conducted without errors.<br><br>  The supervisor wonders <b>if Ari is a competent inspector</b> and if he should be kept as a member of the inspection team, given Big Tony's sighting by a local after Ari's inspection. The supervisor asks the federal agents:<br><br>\"A local reported sighting Big Tony, and I am wondering if I can rely on Ari or if I should fire him. After looking at the evidence carefully, Ari said, \'Big Tony might be dead\'. <b>Is what he said true?</b>\"<br><br><b>What's the most appropriate response to the supervisor\'s question \"is what he said true\"?</b><br><br>",
+    stimulus: tonycompl,
     choices: ['\"Yes, what he said is true\"', '\"No, what he said is false\"'],
 };
 
@@ -365,4 +400,4 @@ const conclusion = {
 timeline.push(conclusion);
 
 
-jsPsych.run(timeline);
+jsPsych.run(timeline)
