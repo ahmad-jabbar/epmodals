@@ -1,4 +1,4 @@
-const jsPsych = initJsPsych({
+const jsPsych = JsPsych.init({
   on_finish: function(data){
     // jsPsych.data.displayData('csv');
     proliferate.submit({"trials": data.values()});
