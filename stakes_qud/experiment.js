@@ -401,3 +401,21 @@ timeline.push(conclusion);
 
 
 jsPsych.run(timeline)
+
+
+
+
+
+
+
+
+
+const conclusion = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: "Thank you for time! Have a nice rest of your day! :) Press space to conclude this study.",
+    choices: [" "]
+};
+timeline.push(conclusion);
+
+
+jsPsych.run(timeline)
